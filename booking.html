@@ -181,49 +181,58 @@
     &copy; 2025 Celebrity Luxe Tours. All rights reserved.
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script>
-    const SUPABASE_URL = 'https://vxmtljktgofbwcmpeuwp.supabase.co'
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ4bXRsamt0Z29mYndjbXBldXdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc1NDM2MDUsImV4cCI6MjA2MzExOTYwNX0.KlhnIIhOnG8eqV8YJmOUUgfAfBJsq8oMNBbfYEEAXHw'
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
 
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
-    const form = document.getElementById('booking-form')
-    const messageDiv = document.getElementById('message')
+    const form = document.getElementById('booking-form');
+    const messageDiv = document.getElementById('message');
 
     form.addEventListener('submit', async (e) => {
-      e.preventDefault()
-      messageDiv.textContent = ''
-      messageDiv.className = ''
+      e.preventDefault();
+      messageDiv.textContent = '';
+      messageDiv.className = '';
 
-      const name = form.name.value.trim()
-      const email = form.email.value.trim()
-      const phone = form.phone.value.trim()
-      const destination = form.destination.value
-      const start_date = form['start-date'].value
-      const end_date = form['end-date'].value
-      const requests = form.requests.value.trim()
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const phone = form.phone.value.trim();
+      const destination = form.destination.value;
+      const start_date = form['start-date'].value;
+      const end_date = form['end-date'].value;
+      const requests = form.requests.value.trim();
 
       if (new Date(start_date) > new Date(end_date)) {
-        messageDiv.textContent = 'End Date must be after Start Date.'
-        messageDiv.className = 'error-message'
-        return
+        messageDiv.textContent = 'End Date must be after Start Date.';
+        messageDiv.className = 'error-message';
+        return;
       }
 
-      const { data, error } = await supabase
-        .from('bookings')
-        .insert([{ name, email, phone, destination, start_date, end_date, requests }])
-
-      if (error) {
-        messageDiv.textContent = 'Sorry, there was an error submitting your booking.'
-        messageDiv.className = 'error-message'
-        console.error(error)
-      } else {
-        messageDiv.textContent = 'Thank you! Your booking request has been submitted.'
-        messageDiv.className = 'success-message'
-        form.reset()
+      try {
+        await db.collection('bookings').add({
+          name, email, phone, destination, start_date, end_date, requests,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        messageDiv.textContent = 'Thank you! Your booking request has been submitted.';
+        messageDiv.className = 'success-message';
+        form.reset();
+      } catch (error) {
+        console.error(error);
+        messageDiv.textContent = 'Sorry, there was an error submitting your booking.';
+        messageDiv.className = 'error-message';
       }
-    })
+    });
   </script>
 </body>
 </html>
+
