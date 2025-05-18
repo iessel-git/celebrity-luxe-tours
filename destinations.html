@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Destinations - Celebrity Luxe Tours</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -15,72 +12,70 @@
       background-color: #fffdfc;
       color: #222;
     }
-
     header {
       background-color: #fff;
       padding: 2rem;
       text-align: center;
-      /* no box-shadow for clean look */
     }
-
     .logo {
       font-family: 'Cinzel', serif;
       font-size: 2rem;
       color: #d4af37;
     }
-
     nav {
       margin-top: 1rem;
     }
-
     nav a {
       color: #444;
       margin: 0 1rem;
       text-decoration: none;
       font-weight: 600;
     }
-
     section {
-      padding: 4rem 2rem;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 2rem;
     }
-
     h1 {
       font-family: 'Cinzel', serif;
       color: #d4af37;
       font-size: 2.5rem;
-      margin-bottom: 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
     }
-
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
     .destination {
-      margin-bottom: 3rem;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
     }
-
+    .destination:hover {
+      transform: scale(1.02);
+    }
     .destination img {
       width: 100%;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      height: 200px;
+      object-fit: cover;
     }
-
-    .destination h2 {
-      font-family: 'Cinzel', serif;
-      color: #333;
-      margin-bottom: 0.5rem;
+    .destination-content {
+      padding: 1rem;
     }
-
-    .destination p {
-      font-size: 1.1rem;
-      line-height: 1.8;
+    .destination-content h2 {
+      color: #d4af37;
+      margin-top: 0;
     }
-
     footer {
       background-color: #f5f5f5;
       text-align: center;
       padding: 2rem;
       color: #555;
+      margin-top: 4rem;
     }
   </style>
 </head>
@@ -97,42 +92,29 @@
   </header>
 
   <section>
-    <h1>Featured Destinations</h1>
-
-    <div class="destination">
-      <img
-        src="https://cdn.pixabay.com/photo/2016/01/19/17/51/los-angeles-1149870_1280.jpg"
-        alt="Los Angeles"
-      />
-      <h2>Los Angeles</h2>
-      <p>
-        Walk the Hollywood Walk of Fame, enjoy rooftop cocktails with panoramic
-        views, and cruise through Beverly Hills in a luxury convertible.
-      </p>
-    </div>
-
-    <div class="destination">
-      <img
-        src="https://cdn.pixabay.com/photo/2017/06/20/11/58/dubai-2428857_1280.jpg"
-        alt="Dubai"
-      />
-      <h2>Dubai</h2>
-      <p>
-        Experience the opulence of the UAE's crown jewel—from private yacht
-        charters to 7-star hospitality and desert adventures in Rolls Royces.
-      </p>
-    </div>
-
-    <div class="destination">
-      <img
-        src="https://cdn.pixabay.com/photo/2016/08/23/18/13/venice-1610479_1280.jpg"
-        alt="Venice"
-      />
-      <h2>Venice</h2>
-      <p>
-        Drift along serene canals in a private gondola, dine in palatial
-        mansions, and explore hidden gems of this romantic floating city.
-      </p>
+    <h1>Our Luxe Destinations</h1>
+    <div class="destinations-grid">
+      <div class="destination">
+        <img src="https://source.unsplash.com/400x300/?losangeles" alt="Los Angeles" />
+        <div class="destination-content">
+          <h2>Los Angeles</h2>
+          <p>Experience the glamour of Hollywood, stunning coastal views, and upscale shopping in the City of Angels.</p>
+        </div>
+      </div>
+      <div class="destination">
+        <img src="https://source.unsplash.com/400x300/?dubai" alt="Dubai" />
+        <div class="destination-content">
+          <h2>Dubai</h2>
+          <p>Indulge in world-class luxury, iconic architecture, and desert adventures in this jewel of the Middle East.</p>
+        </div>
+      </div>
+      <div class="destination">
+        <img src="https://source.unsplash.com/400x300/?venice" alt="Venice" />
+        <div class="destination-content">
+          <h2>Venice</h2>
+          <p>Glide through romantic canals, explore Renaissance art, and soak in the charm of this timeless city.</p>
+        </div>
+      </div>
     </div>
   </section>
 
