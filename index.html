@@ -140,6 +140,25 @@
       color: #777;
     }
 
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .whatsapp-float img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float img:hover {
+      transform: scale(1.1);
+    }
+
     @media (max-width: 768px) {
       .hero h1 {
         font-size: 2rem;
@@ -167,7 +186,7 @@
 
   <section class="hero">
     <video autoplay muted loop>
-      <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+      <source src="https://cdn.coverr.co/videos/coverr-luxury-boat-ride-6856/1080p.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <div>
@@ -227,6 +246,10 @@
     </div>
   </section>
 
+  <a href="https://wa.me/YOUR_NUMBER_HERE" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
   <footer>
     &copy; 2025 Celebrity Luxe Tours. All rights reserved.
   </footer>
@@ -259,6 +282,39 @@
       }
     });
   </script>
+  <!-- WhatsApp Floating Button -->
+<a
+  href="https://wa.me/2028801528"
+  class="whatsapp-float"
+  target="_blank"
+  title="Chat with us on WhatsApp"
+>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+    alt="WhatsApp"
+    style="width: 60px; height: 60px;"
+  />
+</a>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .whatsapp-float img {
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .whatsapp-float img:hover {
+    transform: scale(1.1);
+  }
+</style>
+
 </body>
 
 </html>
