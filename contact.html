@@ -117,42 +117,47 @@
 
   <!-- Firebase SDKs -->
   <script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js';
-    import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js';
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js';
+  import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js';
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCxwAsX5HgOTnUEEq_UR8hA43wL7GyDSeM",
-      authDomain: "celebrityluxetours.firebaseapp.com",
-      projectId: "celebrityluxetours",
-      storageBucket: "celebrityluxetours.appspot.com",
-      messagingSenderId: "206514539414",
-      appId: "1:206514539414:web:319d61b8670b0a11cfe997"
-    };
+  const firebaseConfig = {
+    apiKey: "AIzaSyCxwAsX5HgOTnUEEq_UR8hA43wL7GyDSeM",
+    authDomain: "celebrityluxetours.firebaseapp.com",
+    projectId: "celebrityluxetours",
+    storageBucket: "celebrityluxetours.appspot.com",
+    messagingSenderId: "206514539414",
+    appId: "1:206514539414:web:319d61b8670b0a11cfe997"
+  };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-    document.getElementById("contactForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
+  document.getElementById("contactForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const message = document.getElementById("message").value.trim();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-      try {
-        await addDoc(collection(db, "contacts"), {
-          name,
-          email,
-          message,
-          timestamp: serverTimestamp()
-        });
-        document.getElementById("contactForm").reset();
-        alert("Thank you for submitting your message.");
-      } catch (err) {
-        console.error("Error submitting contact form:", err);
-        alert("Oops! Something went wrong. Please try again later.");
-      }
-    });
-  </script>
+    if (!name || !email || !message) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "contacts"), {
+        name,
+        email,
+        message,
+        timestamp: serverTimestamp()
+      });
+      document.getElementById("contactForm").reset();
+      alert("Thank you for submitting your message.");
+    } catch (err) {
+      console.error("Error submitting contact form:", err);
+      alert("Oops! Something went wrong. Please try again later.");
+    }
+  });
+</script>
 </body>
 </html>
