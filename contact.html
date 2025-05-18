@@ -116,7 +116,7 @@
   <!-- Firebase SDKs -->
   <script type="module">
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js';
-    import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js';
+    import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js';
 
     const firebaseConfig = {
       apiKey: "AIzaSyCxwAsX5HgOTnUEEq_UR8hA43wL7GyDSeM",
@@ -132,20 +132,17 @@
 
     document.getElementById("contactForm").addEventListener("submit", async (e) => {
       e.preventDefault();
-      console.log("Submitting contact form...");
 
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const message = document.getElementById("message").value.trim();
-
-      console.log("Form data:", { name, email, message });
 
       try {
         await addDoc(collection(db, "contacts"), {
           name,
           email,
           message,
-          timestamp: new Date()
+          timestamp: serverTimestamp()
         });
         document.getElementById("contactForm").reset();
         alert("Thank you for submitting your message.");
