@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celebrity Luxe Tours</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    header {
+      background-color: #000;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: #D4AF37;
+      text-shadow: 0 0 10px #D4AF37;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .hero {
+      background: url('https://source.unsplash.com/1600x900/?luxury,travel') no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      color: #fff;
+    }
+
+    .cta-button {
+      margin-top: 1rem;
+      background-color: #D4AF37;
+      border: none;
+      color: #000;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #b38e30;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    section h2 {
+      font-family: 'Cinzel', serif;
+      color: #D4AF37;
+      margin-bottom: 2rem;
+    }
+
+    .section-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .card {
+      background-color: #111;
+      border-radius: 10px;
+      padding: 1rem;
+      width: 300px;
+      color: #fff;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 2rem;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .cta-button {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Celebrity Luxe Tours</div>
+    <nav>
+      <a href="#destinations">Destinations</a>
+      <a href="#experiences">VIP Experiences</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#booking">Booking</a>
+      <a href="#about">About Us</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Travel Like a Star</h1>
+      <button class="cta-button">Book Your Luxe Escape</button>
+    </div>
+  </section>
+
+  <section id="destinations">
+    <h2>Featured Destinations</h2>
+    <div class="section-content">
+      <div class="card">Los Angeles – Hollywood glamour and VIP access</div>
+      <div class="card">Dubai – Desert luxury, skyscrapers, and private shopping</div>
+      <div class="card">Venice – Romantic gondolas, history, and elite retreats</div>
+    </div>
+  </section>
+
+  <section id="experiences">
+    <h2>VIP Experiences</h2>
+    <div class="section-content">
+      <div class="card">Private Yacht Cruises</div>
+      <div class="card">Red Carpet Events</div>
+      <div class="card">Luxury Hotel Suites & Spa Access</div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="section-content">
+      <div class="card">“Felt like a movie star from start to finish.” – Sarah L.</div>
+      <div class="card">“Dubai was a dream. Worth every cent.” – James R.</div>
+      <div class="card">“The private tour of Venice was unforgettable.” – Anna T.</div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <h2>Booking</h2>
+    <div class="section-content">
+      <div class="card">Contact us for a personalized quote and itinerary planning with our elite concierge team.</div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="section-content">
+      <div class="card">Celebrity Luxe Tours curates premium travel experiences in iconic cities. Our mission is to make every traveler feel like a celebrity with exclusive access, luxury service, and unforgettable memories.</div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Celebrity Luxe Tours. All rights reserved.
+  </footer>
+</body>
+
+</html>
