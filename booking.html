@@ -9,50 +9,45 @@
     rel="stylesheet"
   />
   <style>
+    /* Your existing CSS here, same as before */
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       background-color: #fffdfc;
       color: #222;
     }
-
+    /* ... rest of styles unchanged ... */
     header {
       background-color: #fff;
       padding: 2rem;
       text-align: center;
     }
-
     .logo {
       font-family: 'Cinzel', serif;
       font-size: 2rem;
       color: #d4af37;
     }
-
     nav {
       margin-top: 1rem;
     }
-
     nav a {
       color: #444;
       margin: 0 1rem;
       text-decoration: none;
       font-weight: 600;
     }
-
     section {
       max-width: 600px;
       margin: 4rem auto;
       padding: 0 2rem;
       text-align: center;
     }
-
     h1 {
       font-family: 'Cinzel', serif;
       color: #d4af37;
       font-size: 2.5rem;
       margin-bottom: 2rem;
     }
-
     form {
       display: flex;
       flex-direction: column;
@@ -62,13 +57,11 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
-
     label {
       font-weight: 600;
       color: #444;
       text-align: left;
     }
-
     input, select, textarea {
       padding: 0.75rem 1rem;
       border: 1px solid #ccc;
@@ -78,17 +71,14 @@
       outline-offset: 2px;
       transition: border-color 0.3s ease;
     }
-
     input:focus, select:focus, textarea:focus {
       border-color: #d4af37;
       outline: none;
     }
-
     textarea {
       resize: vertical;
       min-height: 100px;
     }
-
     button {
       background-color: #d4af37;
       color: #fff;
@@ -100,29 +90,35 @@
       font-size: 1.1rem;
       transition: background-color 0.3s ease;
     }
-
     button:hover {
       background-color: #b5942b;
     }
-
     .date-range {
       display: flex;
       gap: 1rem;
       justify-content: space-between;
     }
-
     .date-range > div {
       flex: 1;
       display: flex;
       flex-direction: column;
     }
-
     footer {
       background-color: #f5f5f5;
       text-align: center;
       padding: 2rem;
       color: #555;
       margin-top: 4rem;
+    }
+    .success-message {
+      color: #2e7d32;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+    .error-message {
+      color: #d32f2f;
+      font-weight: 600;
+      margin-top: 1rem;
     }
   </style>
 </head>
@@ -141,7 +137,7 @@
   <section>
     <h1>Book Your Luxe Escape</h1>
 
-    <form>
+    <form id="booking-form">
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" placeholder="Your full name" required />
 
@@ -154,9 +150,9 @@
       <label for="destination">Preferred Destination</label>
       <select id="destination" name="destination" required>
         <option value="" disabled selected>Select a destination</option>
-        <option value="los-angeles">Los Angeles</option>
-        <option value="dubai">Dubai</option>
-        <option value="venice">Venice</option>
+        <option value="Los Angeles">Los Angeles</option>
+        <option value="Dubai">Dubai</option>
+        <option value="Venice">Venice</option>
       </select>
 
       <label>Preferred Travel Dates</label>
@@ -179,11 +175,70 @@
       ></textarea>
 
       <button type="submit">Submit Booking</button>
+      <div id="message"></div>
     </form>
   </section>
 
   <footer>
     &copy; 2025 Celebrity Luxe Tours. All rights reserved.
   </footer>
+
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
+  <script>
+    // Initialize Supabase client - replace with your own URL and anon key
+    const SUPABASE_URL = 'https://your-project-ref.supabase.co'
+    const SUPABASE_ANON_KEY = 'your-anon-key'
+
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+    const form = document.getElementById('booking-form')
+    const messageDiv = document.getElementById('message')
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      messageDiv.textContent = ''
+      messageDiv.className = ''
+
+      const name = form.name.value.trim()
+      const email = form.email.value.trim()
+      const phone = form.phone.value.trim()
+      const destination = form.destination.value
+      const start_date = form['start-date'].value
+      const end_date = form['end-date'].value
+      const requests = form.requests.value.trim()
+
+      if (new Date(start_date) > new Date(end_date)) {
+        messageDiv.textContent = 'End Date must be after Start Date.'
+        messageDiv.className = 'error-message'
+        return
+      }
+
+      // Insert booking into Supabase
+      const { data, error } = await supabase
+        .from('bookings')
+        .insert([
+          {
+            name,
+            email,
+            phone,
+            destination,
+            start_date,
+            end_date,
+            requests,
+          },
+        ])
+
+      if (error) {
+        messageDiv.textContent = 'Sorry, there was an error submitting your booking.'
+        messageDiv.className = 'error-message'
+        console.error(error)
+      } else {
+        messageDiv.textContent = 'Thank you! Your booking request has been submitted.'
+        messageDiv.className = 'success-message'
+        form.reset()
+      }
+    })
+  </script>
 </body>
 </html>
