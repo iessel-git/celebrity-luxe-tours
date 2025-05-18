@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VIP Experiences - Celebrity Luxe Tours</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -15,71 +12,77 @@
       background-color: #fffdfc;
       color: #222;
     }
-
     header {
       background-color: #fff;
       padding: 2rem;
       text-align: center;
-      /* no box-shadow */
     }
-
     .logo {
       font-family: 'Cinzel', serif;
       font-size: 2rem;
       color: #d4af37;
     }
-
     nav {
       margin-top: 1rem;
     }
-
     nav a {
       color: #444;
       margin: 0 1rem;
       text-decoration: none;
       font-weight: 600;
     }
-
     section {
-      padding: 4rem 2rem;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
+      max-width: 960px;
+      margin: 4rem auto;
+      padding: 0 2rem;
     }
-
     h1 {
       font-family: 'Cinzel', serif;
       color: #d4af37;
       font-size: 2.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
     }
-
     .experience {
-      margin-bottom: 3rem;
-      text-align: left;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 4rem;
+      align-items: center;
+    }
+    .experience img {
+      width: 100%;
+      max-width: 400px;
       border-radius: 10px;
-      background: #fff;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.07);
-      padding: 1.5rem 2rem;
+      flex: 1;
     }
-
-    .experience h2 {
-      font-family: 'Cinzel', serif;
-      color: #333;
-      margin-bottom: 0.5rem;
+    .experience-content {
+      flex: 2;
     }
-
-    .experience p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin: 0;
+    h2 {
+      font-size: 1.8rem;
+      color: #d4af37;
+      margin-bottom: 1rem;
     }
-
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #444;
+    }
     footer {
       background-color: #f5f5f5;
       text-align: center;
       padding: 2rem;
       color: #555;
+    }
+    @media (max-width: 768px) {
+      .experience {
+        flex-direction: column;
+        text-align: center;
+      }
+      .experience-content {
+        flex: 1;
+      }
     }
   </style>
 </head>
@@ -87,7 +90,8 @@
   <header>
     <div class="logo">Celebrity Luxe Tours</div>
     <nav>
-      <a href="about.html">About Us</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
       <a href="destinations.html">Destinations</a>
       <a href="experiences.html">VIP Experiences</a>
       <a href="booking.html">Booking</a>
@@ -99,28 +103,29 @@
     <h1>Exclusive VIP Experiences</h1>
 
     <div class="experience">
-      <h2>Private Yacht Charter in Dubai</h2>
-      <p>
-        Cruise the Persian Gulf in style aboard a luxury yacht, complete with
-        personal chef, spa services, and a VIP crew catering to your every need.
-      </p>
+      <img src="https://images.unsplash.com/photo-1601597111158-527cc0e2e6b9" alt="Luxury Yacht Cruise" />
+      <div class="experience-content">
+        <h2>Private Yacht Cruises</h2>
+        <p>Experience the ultimate in luxury and relaxation aboard a private yacht. Cruise through stunning waters, enjoy gourmet dining, and soak up the sun in exclusive comfort.</p>
+      </div>
     </div>
 
     <div class="experience">
-      <h2>Red Carpet Arrival in Los Angeles</h2>
-      <p>
-        Arrive like a star with private limousine service, paparazzi photo ops,
-        and access to exclusive Hollywood events and after-parties.
-      </p>
+      <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0" alt="Helicopter Tour" />
+      <div class="experience-content">
+        <h2>Helicopter City Tours</h2>
+        <p>See your destination like never before with a breathtaking aerial tour. Fly over iconic landmarks and scenic vistas in your own private helicopter.</p>
+      </div>
     </div>
 
     <div class="experience">
-      <h2>Private Gondola Tour in Venice</h2>
-      <p>
-        Explore Venice’s secret canals with a private gondolier, enjoying champagne
-        and a gourmet dinner aboard a historic palazzo.
-      </p>
+      <img src="https://images.unsplash.com/photo-1549924231-f129b911e442" alt="Fine Dining Experience" />
+      <div class="experience-content">
+        <h2>Gourmet Dining with Celebrity Chefs</h2>
+        <p>Savor exquisite dishes curated by world-renowned chefs in exclusive venues. From seaside dinners to rooftop tastings, your palate is in for a royal treat.</p>
+      </div>
     </div>
+
   </section>
 
   <footer>
