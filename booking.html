@@ -20,7 +20,7 @@
       background-color: #fff;
       padding: 2rem;
       text-align: center;
-      /* no box-shadow */
+      /* no shadow */
     }
 
     .logo {
@@ -41,9 +41,9 @@
     }
 
     section {
-      padding: 4rem 2rem;
       max-width: 600px;
-      margin: auto;
+      margin: 4rem auto;
+      padding: 0 2rem;
       text-align: center;
     }
 
@@ -51,49 +51,59 @@
       font-family: 'Cinzel', serif;
       color: #d4af37;
       font-size: 2.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
       background: #fff;
       padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.07);
-      text-align: left;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     label {
-      display: block;
-      margin-bottom: 0.5rem;
       font-weight: 600;
       color: #444;
+      text-align: left;
     }
 
     input, select, textarea {
-      width: 100%;
-      padding: 0.6rem;
-      margin-bottom: 1.5rem;
+      padding: 0.75rem 1rem;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
       font-size: 1rem;
       font-family: 'Montserrat', sans-serif;
+      outline-offset: 2px;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #d4af37;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
     }
 
     button {
       background-color: #d4af37;
       color: #fff;
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
       font-weight: 700;
-      border-radius: 5px;
+      border: none;
+      padding: 1rem;
+      border-radius: 6px;
       cursor: pointer;
+      font-size: 1.1rem;
       transition: background-color 0.3s ease;
-      width: 100%;
     }
 
     button:hover {
-      background-color: #b89527;
+      background-color: #b5942b;
     }
 
     footer {
@@ -101,6 +111,7 @@
       text-align: center;
       padding: 2rem;
       color: #555;
+      margin-top: 4rem;
     }
   </style>
 </head>
@@ -118,42 +129,37 @@
 
   <section>
     <h1>Book Your Luxe Escape</h1>
-    <form id="booking-form">
-      <label for="full-name">Full Name</label>
-      <input type="text" id="full-name" name="fullName" placeholder="Your full name" required />
+
+    <form>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
 
       <label for="email">Email Address</label>
       <input type="email" id="email" name="email" placeholder="you@example.com" required />
 
-      <label for="destination">Select Destination</label>
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900" required />
+
+      <label for="destination">Preferred Destination</label>
       <select id="destination" name="destination" required>
-        <option value="" disabled selected>Choose a destination</option>
+        <option value="" disabled selected>Select a destination</option>
         <option value="los-angeles">Los Angeles</option>
         <option value="dubai">Dubai</option>
         <option value="venice">Venice</option>
       </select>
 
       <label for="dates">Preferred Travel Dates</label>
-      <input type="text" id="dates" name="dates" placeholder="e.g., June 1 - June 10" required />
+      <input type="date" id="dates" name="dates" required />
 
-      <label for="notes">Additional Requests</label>
-      <textarea id="notes" name="notes" rows="4" placeholder="Tell us your preferences or special requests"></textarea>
+      <label for="requests">Special Requests / Notes</label>
+      <textarea id="requests" name="requests" placeholder="Let us know your preferences or questions"></textarea>
 
-      <button type="submit">Submit Booking Request</button>
+      <button type="submit">Submit Booking</button>
     </form>
   </section>
 
   <footer>
     &copy; 2025 Celebrity Luxe Tours. All rights reserved.
   </footer>
-
-  <script>
-    const form = document.getElementById('booking-form');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      alert('Thank you for your booking request! We will contact you shortly.');
-      form.reset();
-    });
-  </script>
 </body>
 </html>
